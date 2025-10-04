@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=SUSE+Mono:ital,wght@0,100..800;1,100..800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <!-- Bootstrap Css File -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="assets/css/all.min.css" />
+    <!-- Main Css Styles -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <!-- Logo Of Page -->
+    <link rel="icon" href="public/imgs/Nasa.png" />
+    <!-- Title Of Page -->
+    <title>Nasa</title>
+  </head>
+  <body>
+    <!-- Animated Stars -->
+    <div class="stars" id="stars"></div>
+
+    <!-- Floating Particles -->
+    <div id="particles"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+      <div class="nav-container">
+        <div class="logo">NASA</div>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html#home">Home</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="#photos">Gallery</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="menu-toggle" id="menuToggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </nav>
+    <main>
+      <section class="gallery z-3" id="gallery">
+        <h2 class="section-title text-center mb-5">Our Space Gallery</h2>
+        <div class="overlay" id="overlay">
+          <button class="close-btn" onclick="closeOverlay()">&times;</button>
+          <div class="inner">
+            <div class="img">
+              <img id="overlayImg" src="" alt="" />
+            </div>
+            <div class="text">
+              <h1>
+                <span id="overlayText"></span>
+              </h1>
+            </div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-4 p-3 col-md-6 col-sm-12">
+              <div
+                class="card shadow-sm"
+                onclick="openOverlay('https://images.unsplash.com/photo-1516849841032-87cbac4d88f7?w=800', 'Rocket Launch')"
+              >
+                <div class="img">
+                  <img
+                    src="public/imgs/About.jpeg"
+                    class="img-fluid rounded-top"
+                    alt="Rocket Launch"
+                  />
+                </div>
+                <div class="text p-3">
+                  <h3>Rocket Launch</h3>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 p-3 col-md-6 col-sm-12">
+              <div
+                class="card shadow-sm"
+                onclick="openOverlay('https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?w=800', 'Space Station')"
+              >
+                <div class="img">
+                  <img
+                    src="public/imgs/About.jpeg"
+                    class="img-fluid rounded-top"
+                    alt="Rocket Launch"
+                  />
+                </div>
+                <div class="text p-3">
+                  <h3>Rocket Launch</h3>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 p-3 col-md-6 col-sm-12">
+              <div
+                class="card shadow-sm"
+                onclick="openOverlay('https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?w=800', 'Space Station')"
+              >
+                <div class="img">
+                  <img
+                    src="public/imgs/About.jpeg"
+                    class="img-fluid rounded-top"
+                    alt="Rocket Launch"
+                  />
+                </div>
+                <div class="text p-3">
+                  <h3>Rocket Launch</h3>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 p-3 col-md-6 col-sm-12">
+              <div
+                class="card shadow-sm"
+                onclick="openOverlay('https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?w=800', 'Space Station')"
+              >
+                <div class="img">
+                  <img
+                    src="public/imgs/About.jpeg"
+                    class="img-fluid rounded-top"
+                    alt="Rocket Launch"
+                  />
+                </div>
+                <div class="text p-3">
+                  <h3>Rocket Launch</h3>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 p-3 col-md-6 col-sm-12">
+              <div
+                class="card shadow-sm"
+                onclick="openOverlay('https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?w=800', 'Space Station')"
+              >
+                <div class="img">
+                  <img
+                    src="public/imgs/About.jpeg"
+                    class="img-fluid rounded-top"
+                    alt="Rocket Launch"
+                  />
+                </div>
+                <div class="text p-3">
+                  <h3>Rocket Launch</h3>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 p-3 col-md-6 col-sm-12">
+              <div
+                class="card shadow-sm"
+                onclick="openOverlay('https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?w=800', 'Space Station')"
+              >
+                <div class="img">
+                  <img
+                    src="public/imgs/About.jpeg"
+                    class="img-fluid rounded-top"
+                    alt="Rocket Launch"
+                  />
+                </div>
+                <div class="text p-3">
+                  <h3>Rocket Launch</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="contact" id="contact">
+        <div class="container">
+          <h3 class="fw-bolder display-4 my-5 text-center title z-2">
+            <span class="px-2">Contact.</span>
+          </h3>
+          <div
+            class="ro mb-2 d-flex justify-content-between align-content-center"
+          >
+            <div
+              class="mx-2 my-3 d-flex justify-content-center align-content-center p-5 flex-column rounded-2 text-center"
+            >
+              <div
+                class="d-flex color align-items-center my-1 justify-content-center"
+              >
+                <div class="w-fit ico bg-gray py-4 px-4 rounded-circle">
+                  <i class="fa-solid fa-paper-plane fs-1"></i>
+                </div>
+              </div>
+              <h3 class="fw-bold">Address</h3>
+              <p class="fs-5 text-gray">Sheben Elkom, Egypt</p>
+            </div>
+            <div
+              class="mx-2 my-3 d-flex justify-content-center align-content-center p-5 flex-column rounded-2 text-center"
+            >
+              <div
+                class="d-flex color align-items-center my-1 justify-content-center"
+              >
+                <div class="w-fit ico bg-gray py-4 px-4 rounded-circle">
+                  <i class="fa-solid fa-envelope fs-1"></i>
+                </div>
+              </div>
+              <h3 class="fw-bold">Email</h3>
+              <p class="fs-5 text-gray">RoboMind@gmail.com</p>
+            </div>
+            <div
+              class="mx-2 my-3 d-flex justify-content-center align-content-center p-5 flex-column rounded-2 text-center"
+            >
+              <div
+                class="d-flex color align-items-center my-1 justify-content-center"
+              >
+                <div class="w-fit ico bg-gray py-4 px-4 rounded-circle">
+                  <i class="fa-solid fa-phone fs-1"></i>
+                </div>
+              </div>
+              <h3 class="fw-bold">Phone</h3>
+              <p>
+                <a
+                  href="#"
+                  style="color: #fff"
+                  class="text-decoration-none text-gray fs-5"
+                  >+20 1032438153</a
+                >
+              </p>
+            </div>
+          </div>
+          <form>
+            <div
+              class="inp d-lg-flex d-sm-block justify-content-between align-items-center"
+            >
+              <input
+                placeholder="Name"
+                type="text"
+                class="bg-gray me-3 mb-3 py-2 px-3 rounded-2 fs-5 border-0 w-100"
+              />
+              <input
+                placeholder="Email"
+                type="text"
+                class="bg-gray py-2 mb-3 px-3 rounded-2 fs-5 border-0 w-100"
+              />
+            </div>
+            <textarea
+              placeholder="Message"
+              class="w-100 bg-gray my-3 border-0 fs-5 rounded-2"
+            ></textarea>
+            <a
+              href="#"
+              download
+              class="btn btn-1 px-5 py-3 text-decoration-none text-white bg-dark rounded-1"
+              >Submit</a
+            >
+          </form>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="container">
+        <p>&copy; Robo Mind team. All rights reserved.</p>
+        <nav class="footer-links" aria-label="Footer">
+          <a href="index.html#home">Home</a>
+          <a href="index.html#about">About</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </footer>
+
+    <!-- Back to top button -->
+    <button
+      class="top"
+      id="backToTop"
+      aria-label="Scroll to top"
+      title="Back to top"
+    >
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </button>
+    <!-- Alert Container -->
+    <div class="alert" id="alert"></div>
+
+    <!-- Chatbot -->
+    <div class="chatbot" id="chatbot">
+      <div class="chat-header">
+        <h3><i class="fa-solid fa-robot"></i> Space AI Assistant</h3>
+        <button class="clear-btn" id="clearBtn" title="Clear Chat">
+          <i class="fa-solid fa-trash"></i>
+        </button>
+      </div>
+      <div class="chat-body" id="chatBody">
+        <div class="message bot">
+          <div class="message-avatar"><i class="fa-solid fa-robot"></i></div>
+          <div class="message-bubble">
+            Hello! 👋 I'm your NASA AI assistant. Ask me anything about space
+            exploration!
+          </div>
+        </div>
+      </div>
+      <div class="chat-footer">
+        <div class="chat-input-container">
+          <input
+            type="text"
+            class="chat-input"
+            id="chatInput"
+            placeholder="Ask about space..."
+          />
+          <button class="send-btn" id="sendBtn">
+            <i class="fa-solid fa-paper-plane"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="chatbot-icon" id="chatIcon">
+      <i class="fa-solid fa-robot"></i>
+    </div>
+
+    <!-- Jquery Library -->
+    <script src="assets/js/jquery.js"></script>
+    <!-- Bootstrap Js File -->
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <!-- Main Js File -->
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
