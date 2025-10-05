@@ -327,7 +327,7 @@ inputs.forEach(input => {
     });
 });
 
-const topics = ["moon", "earth", "galaxy", "mars"];
+const topics = ["moon", "earth", "galaxy"];
 const container = document.getElementById("galleryContainer");
 const searchInput = document.getElementById("searchInput");
 const filterSelect = document.getElementById("filterSelect");

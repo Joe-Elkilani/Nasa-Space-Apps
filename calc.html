@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>مقارنة الكواكب — Planet Comparison</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="assets/css/calc.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="logo">
+          <div class="icon">N</div>
+          <div>
+            <h1>مقارنة الكواكب</h1>
+            <p class="lead">
+              اختر كوكبين للمقارنة — سترى القيم والرسم البياني للفروقات
+            </p>
+          </div>
+        </div>
+        <div class="muted">تعليمي — نتائج تقريبية</div>
+      </header>
+
+      <div class="controls">
+        <div>
+          <label style="display: block; margin-bottom: 6px">الكوكب الأول</label>
+          <select id="selA"></select>
+        </div>
+        <div>
+          <label style="display: block; margin-bottom: 6px"
+            >الكوكب الثاني</label
+          >
+          <select id="selB"></select>
+        </div>
+        <div style="display: flex; align-items: end; gap: 8px">
+          <button id="compareBtn" class="primary">قارن الآن</button>
+          <button id="randBtn" class="ghost">مقارنة عشوائية</button>
+          <button id="swapBtn" class="ghost">تبديل</button>
+        </div>
+      </div>
+
+      <section class="grid">
+        <!-- Panel A -->
+        <div class="card" id="panelA">
+          <div class="planet-header">
+            <img class="planet-thumb" id="imgA" src="" alt="A" />
+            <div>
+              <div id="nameA" style="font-weight: 800; font-size: 18px">—</div>
+              <div id="descA" class="muted">اختر للكشف عن المعلومات</div>
+            </div>
+          </div>
+
+          <div id="statsA" style="margin-top: 12px"></div>
+        </div>
+
+        <!-- Panel B -->
+        <div class="card" id="panelB">
+          <div class="planet-header">
+            <img class="planet-thumb" id="imgB" src="" alt="B" />
+            <div>
+              <div id="nameB" style="font-weight: 800; font-size: 18px">—</div>
+              <div id="descB" class="muted">اختر للكشف عن المعلومات</div>
+            </div>
+          </div>
+
+          <div id="statsB" style="margin-top: 12px"></div>
+        </div>
+      </section>
+
+      <!-- Comparison bars -->
+      <div class="card" style="margin-top: 18px">
+        <h3 style="margin-top: 0">مقارنة بصرية</h3>
+        <div class="center muted">
+          كل شريط يُظهر نسبة القيم بين الكوكبين (A مقابل B)
+        </div>
+
+        <div style="margin-top: 12px">
+          <div class="stat-title">نصف القطر (km)</div>
+          <div class="bars">
+            <div class="bar">
+              <div class="fill" id="barRadius" style="width: 0%"></div>
+              <i id="lblRadius"></i>
+            </div>
+          </div>
+
+          <div style="margin-top: 8px" class="stat-title">
+            الكتلة (x10^24 kg)
+          </div>
+          <div class="bars">
+            <div class="bar">
+              <div class="fill" id="barMass" style="width: 0%"></div>
+              <i id="lblMass"></i>
+            </div>
+          </div>
+
+          <div style="margin-top: 8px" class="stat-title">
+            الجاذبية السطحية (m/s²)
+          </div>
+          <div class="bars">
+            <div class="bar">
+              <div class="fill" id="barGravity" style="width: 0%"></div>
+              <i id="lblGravity"></i>
+            </div>
+          </div>
+
+          <div style="margin-top: 8px" class="stat-title">عدد الأقمار</div>
+          <div class="bars">
+            <div class="bar">
+              <div class="fill" id="barMoons" style="width: 0%"></div>
+              <i id="lblMoons"></i>
+            </div>
+          </div>
+
+          <div style="margin-top: 8px" class="stat-title">
+            المسافة من الشمس (AU)
+          </div>
+          <div class="bars">
+            <div class="bar">
+              <div class="fill" id="barAU" style="width: 0%"></div>
+              <i id="lblAU"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="assets/js/calc.js"></script>
+  </body>
+</html>
