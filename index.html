@@ -162,84 +162,67 @@
     </div>
     <section class="contact" id="contact">
       <div class="container">
-        <h3 class="fw-bolder display-4 my-5 text-center title z-2">
-          <span class="px-2">Contact.</span>
+        <h3 class="title text-center">
+          <span>Get In Touch</span>
         </h3>
-        <div
-          class="ro mb-2 d-flex md-flex-wrap md-flex-column sm-flex-wrap sm-flex-column justify-content-between align-content-center"
-        >
-          <div
-            class="mx-2 my-3 d-flex justify-content-center align-content-center p-5 flex-column rounded-2 text-center"
-          >
-            <div
-              class="d-flex color align-items-center my-1 justify-content-center"
-            >
-              <div class="w-fit ico bg-gray py-4 px-4 rounded-circle">
-                <i class="fa-solid fa-paper-plane fs-1"></i>
-              </div>
+
+        <!-- Contact Info Cards -->
+        <div class="contact-info">
+          <div class="contact-card">
+            <div class="icon-wrapper">
+              <i class="fa-solid fa-location-dot"></i>
             </div>
-            <h3 class="fw-bold">Address</h3>
-            <p class="fs-5 text-gray">Sheben Elkom, Egypt</p>
+            <h3>Address</h3>
+            <p>Sheben Elkom, Egypt</p>
           </div>
-          <div
-            class="mx-2 my-3 d-flex justify-content-center align-content-center p-5 flex-column rounded-2 text-center"
-          >
-            <div
-              class="d-flex color align-items-center my-1 justify-content-center"
-            >
-              <div class="w-fit ico bg-gray py-4 px-4 rounded-circle">
-                <i class="fa-solid fa-envelope fs-1"></i>
-              </div>
+
+          <div class="contact-card">
+            <div class="icon-wrapper">
+              <i class="fa-solid fa-envelope"></i>
             </div>
-            <h3 class="fw-bold">Email</h3>
-            <p class="fs-5 text-gray">RoboMind@gmail.com</p>
+            <h3>Email</h3>
+            <a href="mailto:RoboMind@gmail.com">RoboMind@gmail.com</a>
           </div>
-          <div
-            class="mx-2 my-3 d-flex justify-content-center align-content-center p-5 flex-column rounded-2 text-center"
-          >
-            <div
-              class="d-flex color align-items-center my-1 justify-content-center"
-            >
-              <div class="w-fit ico bg-gray py-4 px-4 rounded-circle">
-                <i class="fa-solid fa-phone fs-1"></i>
-              </div>
+
+          <div class="contact-card">
+            <div class="icon-wrapper">
+              <i class="fa-solid fa-phone"></i>
             </div>
-            <h3 class="fw-bold">Phone</h3>
-            <p>
-              <a
-                href="#"
-                style="color: #fff"
-                class="text-decoration-none text-gray fs-5"
-                >+20 1032438153</a
-              >
-            </p>
+            <h3>Phone</h3>
+            <a href="tel:+201032438153">+20 1032438153</a>
           </div>
         </div>
-        <form>
-          <div
-            class="inp d-lg-flex d-sm-block justify-content-between align-items-center"
-          >
-            <input
-              placeholder="Name"
-              type="text"
-              class="bg-gray me-3 mb-3 py-2 px-3 rounded-2 fs-5 border-0 w-100"
-            />
-            <input
-              placeholder="Email"
-              type="text"
-              class="bg-gray py-2 mb-3 px-3 rounded-2 fs-5 border-0 w-100"
-            />
+
+        <!-- Contact Form -->
+        <form class="contact-form" id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <input type="text" id="name" placeholder="Your Name" required />
+            </div>
+            <div class="form-group">
+              <input
+                type="email"
+                id="email"
+                placeholder="Your Email"
+                required
+              />
+            </div>
           </div>
-          <textarea
-            placeholder="Message"
-            class="w-100 bg-gray my-3 border-0 fs-5 rounded-2"
-          ></textarea>
-          <a
-            href="#"
-            download
-            class="btn btn-1 px-5 py-3 text-decoration-none text-white bg-dark rounded-1"
-            >Submit</a
-          >
+
+          <div class="form-group">
+            <textarea
+              id="message"
+              placeholder="Your Message"
+              required
+            ></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn">Send Message</button>
+
+          <div class="success-message" id="successMessage">
+            <i class="fa-solid fa-check-circle"></i> Thank you! Your message has
+            been sent successfully.
+          </div>
         </form>
       </div>
     </section>

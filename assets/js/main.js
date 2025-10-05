@@ -204,36 +204,206 @@ window.addEventListener("scroll", () => {
         el.style.transform = `translateY(${scrolled * 0.5}px)`;
     });
 });
-function openOverlay(imgSrc, title) {
-    const overlay = document.getElementById("overlay");
-    const overlayImg = document.getElementById("overlayImg");
-    const overlayText = document.getElementById("overlayText");
+// Overlay variables
+let currentZoom = 1;
+let isDragging = false;
+let startX, startY, translateX = 0, translateY = 0;
+const overlay = document.getElementById("overlay");
+const overlayImg = document.getElementById("overlayImg");
+const overlayText = document.getElementById("overlayText");
 
+// Open Overlay
+function openOverlay(imgSrc, title) {
     overlayImg.src = imgSrc;
     overlayText.textContent = title;
     overlay.classList.add("active");
-
     document.body.style.overflow = "hidden";
+    resetZoom();
 }
 
+// Close Overlay
 function closeOverlay() {
-    const overlay = document.getElementById("overlay");
     overlay.classList.remove("active");
     document.body.style.overflow = "auto";
+    resetZoom();
 }
 
-// Close overlay when clicking outside the image
-document
-    .getElementById("overlay")
-    .addEventListener("click", function (e) {
-        if (e.target === this) {
-            closeOverlay();
-        }
-    });
+// Zoom Controls
+function zoomIn() {
+    currentZoom = Math.min(currentZoom + 0.3, 4);
+    updateTransform();
+}
 
-// Close overlay with Escape key
-document.addEventListener("keydown", function (e) {
+function zoomOut() {
+    currentZoom = Math.max(currentZoom - 0.3, 0.5);
+    updateTransform();
+}
+
+function resetZoom() {
+    currentZoom = 1;
+    translateX = 0;
+    translateY = 0;
+    updateTransform();
+}
+
+function updateTransform() {
+    overlayImg.style.transform = `scale(${currentZoom}) translate(${translateX}px, ${translateY}px)`;
+}
+
+// Dragging functionality
+overlayImg.addEventListener("mousedown", (e) => {
+    if (currentZoom > 1) {
+        isDragging = true;
+        startX = e.clientX - translateX;
+        startY = e.clientY - translateY;
+        overlayImg.style.cursor = "grabbing";
+    }
+});
+
+document.addEventListener("mousemove", (e) => {
+    if (isDragging) {
+        translateX = e.clientX - startX;
+        translateY = e.clientY - startY;
+        updateTransform();
+    }
+});
+
+document.addEventListener("mouseup", () => {
+    isDragging = false;
+    overlayImg.style.cursor = "move";
+});
+
+// Mouse wheel zoom
+overlay.addEventListener("wheel", (e) => {
+    e.preventDefault();
+    if (e.deltaY < 0) {
+        zoomIn();
+    } else {
+        zoomOut();
+    }
+});
+
+// Close overlay on background click
+overlay.addEventListener("click", (e) => {
+    if (e.target === overlay) {
+        closeOverlay();
+    }
+});
+
+// Close with Escape key
+document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
         closeOverlay();
     }
 });
+
+// Close button (optional)
+document.getElementById("closeBtn").addEventListener("click", closeOverlay);
+
+document.getElementById('contactForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const successMessage = document.getElementById('successMessage');
+    successMessage.classList.add('show');
+
+    // Reset form
+    this.reset();
+
+    // Hide success message after 5 seconds
+    setTimeout(() => {
+        successMessage.classList.remove('show');
+    }, 5000);
+});
+
+// Add input animation
+const inputs = document.querySelectorAll('.contact-form input, .contact-form textarea');
+inputs.forEach(input => {
+    input.addEventListener('focus', function () {
+        this.parentElement.style.transform = 'translateY(-2px)';
+    });
+
+    input.addEventListener('blur', function () {
+        this.parentElement.style.transform = 'translateY(0)';
+    });
+});
+
+const topics = ["moon", "earth", "galaxy", "mars"];
+const container = document.getElementById("galleryContainer");
+const searchInput = document.getElementById("searchInput");
+const filterSelect = document.getElementById("filterSelect");
+
+let allImages = [];
+
+topics.forEach((topic) => {
+    const apiUrl = `https://images-api.nasa.gov/search?q=${topic}&media_type=image`;
+
+    fetch(apiUrl)
+        .then((res) => res.json())
+        .then((data) => {
+            const items = data.collection.items.slice(0, 10);
+            items.forEach((item) => {
+                const title = item.data[0].title || topic.toUpperCase();
+                const imageUrl = item.links ? item.links[0].href : "";
+                if (!imageUrl) return;
+
+                allImages.push({
+                    title,
+                    imageUrl,
+                    topic,
+                });
+            });
+            displayImages(allImages);
+        })
+        .catch((err) => console.error(`Error loading ${topic}:`, err));
+});
+
+// دالة عرض الصور
+function displayImages(images) {
+    container.innerHTML = "";
+
+    if (images.length === 0) {
+        container.innerHTML = `<p class="text-center text-light mt-4">No images found 🚫</p>`;
+        return;
+    }
+
+    images.forEach((img) => {
+        const card = document.createElement("div");
+        card.className = "col-lg-4 col-md-6 col-sm-12 p-3";
+        card.innerHTML = `
+        <div class="card shadow-sm">
+          <div class="img">
+            <img src="${img.imageUrl}" class="img-fluid" alt="${img.title}">
+          </div>
+          <div class="text p-3">
+            <h5>${img.title}</h5>
+            <p class="small text-muted">Topic: ${img.topic.toUpperCase()}</p>
+          </div>
+        </div>
+      `;
+        container.appendChild(card);
+    });
+    // بعد ما تعمل append لكل الكروت:
+    const imgElements = container.querySelectorAll(".card img");
+    imgElements.forEach((imgEl) => {
+        imgEl.addEventListener("click", () => {
+            const title = imgEl.closest(".card").querySelector("h5").textContent;
+            openOverlay(imgEl.src, title);
+        });
+    });
+
+}
+function applyFilters() {
+    const searchTerm = searchInput.value.toLowerCase();
+    const selectedTopic = filterSelect.value;
+
+    const filtered = allImages.filter((img) => {
+        const matchesSearch = img.title.toLowerCase().includes(searchTerm);
+        const matchesTopic =
+            selectedTopic === "all" || img.topic === selectedTopic;
+        return matchesSearch && matchesTopic;
+    });
+
+    displayImages(filtered);
+}
+searchInput.addEventListener("input", applyFilters);
+filterSelect.addEventListener("change", applyFilters);

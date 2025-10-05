@@ -49,208 +49,117 @@
       </div>
     </nav>
     <main>
-      <section class="gallery z-3" id="gallery">
-        <h2 class="section-title text-center mb-5">Our Space Gallery</h2>
-        <div class="overlay" id="overlay">
-          <button class="close-btn" onclick="closeOverlay()">&times;</button>
-          <div class="inner">
-            <div class="img">
-              <img id="overlayImg" src="" alt="" />
-            </div>
-            <div class="text">
-              <h1>
-                <span id="overlayText"></span>
-              </h1>
-            </div>
+      <section class="gallery" id="gallery">
+        <h2 class="section-title">Our Space Gallery</h2>
+
+        <!-- Overlay -->
+        <div id="overlay" class="overlay">
+          <span id="closeBtn">&times;</span>
+
+          <div class="zoom-controls">
+            <button class="zoom-btn" onclick="zoomIn()">+</button>
+            <button class="zoom-btn" onclick="zoomOut()">−</button>
+            <button class="zoom-btn" onclick="resetZoom()" title="Reset Zoom">
+              <i class="fas fa-compress"></i>
+            </button>
+          </div>
+
+          <div class="img">
+            <img id="overlayImg" src="" alt="" />
+          </div>
+
+          <div class="text">
+            <h1><span id="overlayText"></span></h1>
           </div>
         </div>
+
         <div class="container">
-          <div class="row">
-            <div class="col-lg-4 p-3 col-md-6 col-sm-12">
-              <div
-                class="card shadow-sm"
-                onclick="openOverlay('https://images.unsplash.com/photo-1516849841032-87cbac4d88f7?w=800', 'Rocket Launch')"
-              >
-                <div class="img">
-                  <img
-                    src="public/imgs/About.jpeg"
-                    class="img-fluid rounded-top"
-                    alt="Rocket Launch"
-                  />
-                </div>
-                <div class="text p-3">
-                  <h3>Rocket Launch</h3>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 p-3 col-md-6 col-sm-12">
-              <div
-                class="card shadow-sm"
-                onclick="openOverlay('https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?w=800', 'Space Station')"
-              >
-                <div class="img">
-                  <img
-                    src="public/imgs/About.jpeg"
-                    class="img-fluid rounded-top"
-                    alt="Rocket Launch"
-                  />
-                </div>
-                <div class="text p-3">
-                  <h3>Rocket Launch</h3>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 p-3 col-md-6 col-sm-12">
-              <div
-                class="card shadow-sm"
-                onclick="openOverlay('https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?w=800', 'Space Station')"
-              >
-                <div class="img">
-                  <img
-                    src="public/imgs/About.jpeg"
-                    class="img-fluid rounded-top"
-                    alt="Rocket Launch"
-                  />
-                </div>
-                <div class="text p-3">
-                  <h3>Rocket Launch</h3>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 p-3 col-md-6 col-sm-12">
-              <div
-                class="card shadow-sm"
-                onclick="openOverlay('https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?w=800', 'Space Station')"
-              >
-                <div class="img">
-                  <img
-                    src="public/imgs/About.jpeg"
-                    class="img-fluid rounded-top"
-                    alt="Rocket Launch"
-                  />
-                </div>
-                <div class="text p-3">
-                  <h3>Rocket Launch</h3>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 p-3 col-md-6 col-sm-12">
-              <div
-                class="card shadow-sm"
-                onclick="openOverlay('https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?w=800', 'Space Station')"
-              >
-                <div class="img">
-                  <img
-                    src="public/imgs/About.jpeg"
-                    class="img-fluid rounded-top"
-                    alt="Rocket Launch"
-                  />
-                </div>
-                <div class="text p-3">
-                  <h3>Rocket Launch</h3>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 p-3 col-md-6 col-sm-12">
-              <div
-                class="card shadow-sm"
-                onclick="openOverlay('https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?w=800', 'Space Station')"
-              >
-                <div class="img">
-                  <img
-                    src="public/imgs/About.jpeg"
-                    class="img-fluid rounded-top"
-                    alt="Rocket Launch"
-                  />
-                </div>
-                <div class="text p-3">
-                  <h3>Rocket Launch</h3>
-                </div>
-              </div>
-            </div>
+          <div class="filter-bar text-center mb-5">
+            <input
+              type="text"
+              id="searchInput"
+              class="form-control d-inline-block w-50"
+              placeholder="Search for space images..."
+            />
+
+            <select
+              id="filterSelect"
+              class="form-select d-inline-block w-25 ms-2"
+            >
+              <option value="all">All Topics</option>
+              <option value="moon">Moon</option>
+              <option value="earth">Earth</option>
+              <option value="galaxy">Galaxy</option>
+              <option value="mars">Mars</option>
+            </select>
           </div>
+
+          <div class="row" id="galleryContainer"></div>
         </div>
       </section>
       <section class="contact" id="contact">
         <div class="container">
-          <h3 class="fw-bolder display-4 my-5 text-center title z-2">
-            <span class="px-2">Contact.</span>
+          <h3 class="title text-center">
+            <span>Get In Touch</span>
           </h3>
-          <div
-            class="ro mb-2 d-flex justify-content-between align-content-center"
-          >
-            <div
-              class="mx-2 my-3 d-flex justify-content-center align-content-center p-5 flex-column rounded-2 text-center"
-            >
-              <div
-                class="d-flex color align-items-center my-1 justify-content-center"
-              >
-                <div class="w-fit ico bg-gray py-4 px-4 rounded-circle">
-                  <i class="fa-solid fa-paper-plane fs-1"></i>
-                </div>
+
+          <!-- Contact Info Cards -->
+          <div class="contact-info">
+            <div class="contact-card">
+              <div class="icon-wrapper">
+                <i class="fa-solid fa-location-dot"></i>
               </div>
-              <h3 class="fw-bold">Address</h3>
-              <p class="fs-5 text-gray">Sheben Elkom, Egypt</p>
+              <h3>Address</h3>
+              <p>Sheben Elkom, Egypt</p>
             </div>
-            <div
-              class="mx-2 my-3 d-flex justify-content-center align-content-center p-5 flex-column rounded-2 text-center"
-            >
-              <div
-                class="d-flex color align-items-center my-1 justify-content-center"
-              >
-                <div class="w-fit ico bg-gray py-4 px-4 rounded-circle">
-                  <i class="fa-solid fa-envelope fs-1"></i>
-                </div>
+
+            <div class="contact-card">
+              <div class="icon-wrapper">
+                <i class="fa-solid fa-envelope"></i>
               </div>
-              <h3 class="fw-bold">Email</h3>
-              <p class="fs-5 text-gray">RoboMind@gmail.com</p>
+              <h3>Email</h3>
+              <a href="mailto:RoboMind@gmail.com">RoboMind@gmail.com</a>
             </div>
-            <div
-              class="mx-2 my-3 d-flex justify-content-center align-content-center p-5 flex-column rounded-2 text-center"
-            >
-              <div
-                class="d-flex color align-items-center my-1 justify-content-center"
-              >
-                <div class="w-fit ico bg-gray py-4 px-4 rounded-circle">
-                  <i class="fa-solid fa-phone fs-1"></i>
-                </div>
+
+            <div class="contact-card">
+              <div class="icon-wrapper">
+                <i class="fa-solid fa-phone"></i>
               </div>
-              <h3 class="fw-bold">Phone</h3>
-              <p>
-                <a
-                  href="#"
-                  style="color: #fff"
-                  class="text-decoration-none text-gray fs-5"
-                  >+20 1032438153</a
-                >
-              </p>
+              <h3>Phone</h3>
+              <a href="tel:+201032438153">+20 1032438153</a>
             </div>
           </div>
-          <form>
-            <div
-              class="inp d-lg-flex d-sm-block justify-content-between align-items-center"
-            >
-              <input
-                placeholder="Name"
-                type="text"
-                class="bg-gray me-3 mb-3 py-2 px-3 rounded-2 fs-5 border-0 w-100"
-              />
-              <input
-                placeholder="Email"
-                type="text"
-                class="bg-gray py-2 mb-3 px-3 rounded-2 fs-5 border-0 w-100"
-              />
+
+          <!-- Contact Form -->
+          <form class="contact-form" id="contactForm">
+            <div class="form-row">
+              <div class="form-group">
+                <input type="text" id="name" placeholder="Your Name" required />
+              </div>
+              <div class="form-group">
+                <input
+                  type="email"
+                  id="email"
+                  placeholder="Your Email"
+                  required
+                />
+              </div>
             </div>
-            <textarea
-              placeholder="Message"
-              class="w-100 bg-gray my-3 border-0 fs-5 rounded-2"
-            ></textarea>
-            <a
-              href="#"
-              download
-              class="btn btn-1 px-5 py-3 text-decoration-none text-white bg-dark rounded-1"
-              >Submit</a
-            >
+
+            <div class="form-group">
+              <textarea
+                id="message"
+                placeholder="Your Message"
+                required
+              ></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">Send Message</button>
+
+            <div class="success-message" id="successMessage">
+              <i class="fa-solid fa-check-circle"></i> Thank you! Your message
+              has been sent successfully.
+            </div>
           </form>
         </div>
       </section>
